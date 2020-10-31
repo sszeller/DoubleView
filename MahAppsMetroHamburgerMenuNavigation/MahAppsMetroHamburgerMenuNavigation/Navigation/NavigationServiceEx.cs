@@ -33,8 +33,7 @@ namespace MahAppsMetroHamburgerMenuNavigation.Navigation
         {
             if (this.Frame.NavigationService.Content != navigationTarget)
             {
-                Frame.NavigationService.Content = navigationTarget;
-                return true;
+                return Frame.Navigate(navigationTarget);
             }
 
             return false;
