@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Windows;
 using System.Windows.Navigation;
 using MahApps.Metro.Controls;
 using MahAppsMetroHamburgerMenuNavigation.ViewModels;
@@ -44,8 +45,13 @@ namespace MahAppsMetroHamburgerMenuNavigation
                                                                 .OfType<MenuItem>()
                                                                 .FirstOrDefault(x => x.NavigationTarget == e.Content);
 
+            // update back button
+            this.GoBackButton.Visibility = NavigationServiceEx.Frame.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
+        }
 
-            NavigationServiceEx.Frame.Content = e.Content;
+        private void GoBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationServiceEx.Frame.GoBack();
         }
     }
 }
